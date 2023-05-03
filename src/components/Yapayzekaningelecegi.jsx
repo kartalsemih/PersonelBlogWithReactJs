@@ -1,26 +1,55 @@
 
-import Navbar from './Navbar'
+
 import Footer from './Footer'
 import React, { useEffect } from 'react';
-import Img1 from '../images/pexels-tara-winstead-8849295.jpg'
-import Img2 from '../images/2002.i039.010_chatbot_messenger_ai_isometric_set-05.jpg'
+import Img1 from '../images/62486350_thai1jpg.jpg'
+import Img2 from '../images/Adsız.jpg'
 import Img3 from '../images/pexels-hatice-baran-16037283.jpg'
+import Navbar from './Butonsuz_navbar'
+import { MdOutlineLightMode,MdOutlineNightlight } from 'react-icons/md';
 
+import { useContext ,useState} from 'react'
 
 function Yapayzeka() {
+
+
+
+    const [darkMode, setDarkMode] = useState(false);
+    const className = darkMode ? 'bg-dark text-white border-white' : '';
+
+    const toggleDarkMode = () => {
+        setDarkMode(prevDarkMode => !prevDarkMode);
+        localStorage.setItem('isDarkMode', !darkMode);
+    }
+
+
+    useEffect(() => {
+        const isDarkMode = localStorage.getItem('isDarkMode') === 'true';
+        setDarkMode(isDarkMode);
+    }, []);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+
+
     return (
-        <div>
+        <div className={`${className}`}>
             <Navbar />
 
 
             <div className="container ">
                 <div className="row">
-                    <div style={{ borderRadius: "4px", textAlign: "left" }} className="col-11 mx-auto border border-dark border-radius my-1 ">
+                <div style={{ borderRadius: "4px", textAlign: "left" }} className={`col-11 mx-auto border border-dark border-radius my-1 ${className}`}>
+
+                        <div className='d-flex justify-content-end'>
+                            <button className="btn btn-secondary btn-sm my-3" onClick={toggleDarkMode}>
+                            {darkMode ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
+                            </button>
+                        </div>
+
+
                         <h1 className="text-center mt-3">
                             <strong>Yapay Zeka</strong>
                         </h1>
@@ -33,9 +62,9 @@ function Yapayzeka() {
                         <div className="container mt-5 mb-5">
                             <div className="row">
                                 <div className="col-lg-6 col-sm-12">
-                                    <img className='img-fluid' src={Img1} alt="" />
+                                    <img className='img-fluid' src={Img1} style={{borderRadius:'5%'}} alt="" />
                                 </div>
-                                <div className="col-lg-6 col-sm-12">
+                                <div className="col-lg-6 col-sm-12 my-auto ">
                                     <p className="text-left">
                                         Otonom araç teknolojilerinde YZ'nin kullanımı da artacak. YZ'ye sahip araçlar sayesinde trafik kazaları ve trafik sıkışıklığı azaltılabilir. Ayrıca, taşımacılık sektöründe de YZ kullanımı artacak ve lojistik süreçler daha verimli hale gelecektir.
                                     </p>
@@ -54,7 +83,7 @@ function Yapayzeka() {
                         <div className="container mt-5 mb-5">
                             <div className="row">
                                 <div className="col-lg-6 col-sm-12">
-                                    <img className='img-fluid' src={Img2} alt="" />
+                                    <img className='img-fluid' src={Img2}  alt="" />
                                 </div>
                                 <div className="col-lg-6  d-flex align-items-center col-sm-12">
                                     <p className="text-left ">
@@ -70,7 +99,7 @@ function Yapayzeka() {
                         <p className="text-left">
                             ChatGPT, doğal dil işleme teknolojisinin en son gelişmelerini kullanarak, gerçekçi ve akıcı metinler üretebilir. ChatGPT, öğrenme sürecinde büyük bir veri kümesini kullanır ve bu veriler sayesinde, insan benzeri cevaplar üretme yeteneğine sahiptir. Ayrıca, ChatGPT, öğrenme sürecinde sürekli olarak kendini geliştirir ve daha iyi sonuçlar üretir.
                         </p>
-                        <img className='img-fluid mt-5 mb-5' src={Img3} alt="" />
+                        <img className='img-fluid mt-5 mb-5' src={Img3}  alt="" />
                         <p className="text-left">
                             ChatGPT'nin kullanımı birçok farklı endüstride hızla artmaktadır. Özellikle, müşteri hizmetleri ve pazarlama gibi alanlarda, ChatGPT'nin kullanımı giderek artmaktadır. ChatGPT, müşteri hizmetlerindeki sıradan sorulara cevap vermek, dil öğreniminde öğrencilere yardımcı olmak ve metin oluşturmada yaratıcılığı artırmak için kullanılabilir.
                         </p>

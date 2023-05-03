@@ -1,26 +1,52 @@
 
-import Navbar from './Navbar'
+import Navbar from './Butonsuz_navbar'
 import Footer from './Footer'
 import Img1 from '../images/Ekran görüntüsü 2023-03-17 131751.png'
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect ,useState} from 'react';
+import { MdOutlineLightMode,MdOutlineNightlight } from 'react-icons/md';
 
 function Htmlyazi() {
+
+
+    const [darkMode, setDarkMode] = useState(false);
+    const className = darkMode ? 'bg-dark text-white border-white' : '';
+
+    const toggleDarkMode = () => {
+        setDarkMode(prevDarkMode => !prevDarkMode);
+        localStorage.setItem('isDarkMode', !darkMode);
+    }
+
+
+    useEffect(() => {
+        const isDarkMode = localStorage.getItem('isDarkMode') === 'true';
+        setDarkMode(isDarkMode);
+    }, []);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
 
+
     return (
-        <main>
+        <main className={`${className}`}>
             <Navbar />
             <div className="container">
                 <div className="row">
-                    <div className="col-11 border border-dark my-1 mx-auto">
+                    <div className={`col-11 border border-dark my-1 mx-auto ${className}`}>
+
+
+                        <div className='d-flex justify-content-end'>
+                            <button className="btn btn-secondary btn-sm my-3" onClick={toggleDarkMode}>
+                                {darkMode ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
+                            </button>
+                        </div>
+
+
                         <h1 className="text-center mb-4 mt-3">
                             <strong>HTML nedir?</strong>
                         </h1>
-                        <p  className="text-center first-letter">
+                        <p className="text-center first-letter">
                             HTML, Hypertext Markup Language (Hiper Metin İşaretleme Dili) olarak da bilinen bir internet sayfası yapısı ve içeriği oluşturma dilidir. Web tarayıcıları tarafından yorumlanan ve görüntülenen web sayfalarının yapısını belirlemek için kullanılır. HTML, bir dizi etiket ve özellik kullanarak web sayfasında metin, resim, video ve diğer öğeleri biçimlendirir ve yerleştirir. HTML, web geliştiricilerinin web sayfaları oluştururken yapısını, düzenini ve içeriğini belirlemelerine yardımcı olur.
                         </p>
                         <h2 className="text-center mb-4">
@@ -57,12 +83,12 @@ function Htmlyazi() {
 
             <div className="container">
                 <div className="row">
-                    <div style={{ textAlign: "center" }} className="col-11 mx-auto border border-dark my-1">
+                    <div style={{ textAlign: "center" }} className={`col-11 mx-auto border border-dark my-1 ${className}`}>
                         <h2 className="mb-4">
                             <strong>Sık kullanılan HTML etiketleri</strong>
                         </h2>
                         <a href={Img1} target="_blank" rel="noopener noreferrer">
-                            <img className="img-fluid pb-1 cursor" src={Img1} style={{width:"674px",height:"450px"}} alt="" />
+                            <img className="img-fluid pb-1 cursor" src={Img1} style={{ width: "674px", height: "450px" }} alt="" />
                         </a>
 
                     </div>

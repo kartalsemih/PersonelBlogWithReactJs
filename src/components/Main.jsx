@@ -6,7 +6,7 @@ import Img4 from '../images/resim_2022-12-11_174606670.png'
 import Img5 from '../images/blackmirror.jpg'
 import Img6 from '../images/1584354509-yapay-zeka-ve-insanin-uyumu-artirilmis-zeka-jpg.jpg'
 import { BsCalendarDate } from 'react-icons/bs';
-
+import { useContext } from 'react'
 
 
 
@@ -14,13 +14,18 @@ import { BsCalendarDate } from 'react-icons/bs';
 
 export function Main1() {
 
-    return (
-        <div className="card border border-dark rounded ml-4 mx-auto" style={{ width: "18rem" }}>
-            <img src={Img1} className="card-img-top img-fluid img-thumbnail" alt="..." />
-            <div className="card-body text-center">
 
-                <p className="card-text no-indent">İnternetin dünya çapında erişimini mümkün kıldığı sayısız işletmenin varlığından ilham alıyorum ve bu işletmelerin başarısı için teknolojik çözümler üretmek benim tutkum.</p>
-                <Link to="/hakkimda" className="btn">Hakkımda</Link>
+
+
+    return (
+        <div>
+            <div className="card border border-dark rounded ml-4 mx-auto" style={{ width: "18rem" }}>
+                <img src={Img1} className="card-img-top img-fluid img-thumbnail" alt="..." />
+                <div className="card-body text-center">
+
+                    <p className="card-text no-indent">İnternetin dünya çapında erişimini mümkün kıldığı sayısız işletmenin varlığından ilham alıyorum ve bu işletmelerin başarısı için teknolojik çözümler üretmek benim tutkum.</p>
+                    <Link to="/hakkimda" className="btn">Hakkımda</Link>
+                </div>
             </div>
         </div>
     )
@@ -29,14 +34,22 @@ export function Main1() {
 
 
 
-export function Main2() {
-    return (
-        <div className="card border border-dark rounded ml-4 mx-auto" style={{ width: '18rem', marginBottom: '4px' }}>
-            <img style={{ borderRadius: '9px' }} src={Img2} className="card-img-top img-fluid img-thumbnail" alt="..." />
-            <div className="card-body text-center">
+export function Main2(className) {
 
-                <p className="card-text no-indent">HTML, Hypertext Markup Language, web sitelerinin yapısını belirlemek için kullanılan bir etiket dilidir. Bu makalede, HTML etiketlerinin ne olduğu, nasıl kullanıldığı ve neden önemli olduğu hakkında bilgi edineceksiniz.</p>
-                <Link to={'/html-yazi'} className="btn">Yazıyı gör</Link>
+
+    const newClassName=`${className.className} text-white`
+
+
+
+    return (
+        <div>
+            <div className={`card rounded  border-dark ml-4 mx-auto ${newClassName}`} style={{ width: '18rem', marginBottom: '4px'}}>
+                <img style={{ borderRadius: '9px' }} src={Img2} className="card-img-top img-fluid img-thumbnail" alt="..." />
+                <div className="card-body text-center">
+
+                    <p className="card-text no-indent">HTML, Hypertext Markup Language, web sitelerinin yapısını belirlemek için kullanılan bir etiket dilidir. Bu makalede, HTML etiketlerinin ne olduğu, nasıl kullanıldığı ve neden önemli olduğu hakkında bilgi edineceksiniz.</p>
+                    <Link to={'/html-yazi'} className="btn">Yazıyı gör</Link>
+                </div>
             </div>
         </div>
     )
@@ -45,9 +58,12 @@ export function Main2() {
 
 
 
-export function Main3() {
+export function Main3(className) {
+
+    const newClassName=`${className.className} text-white`
+
     return (
-        <div className="card border border-dark rounded ml-4 mx-auto" style={{ width: '18rem', marginBottom: '4px' }}>
+        <div className={`card rounded border-dark ml-4 mx-auto ${newClassName}`} style={{ width: '18rem', marginBottom: '4px' }}>
             <img style={{ borderRadius: '9px' }} src={Img3} className="card-img-top img-fluid img-thumbnail" alt="..." />
             <div className="card-body text-center">
 
@@ -60,9 +76,12 @@ export function Main3() {
 
 
 
-export function Main4() {
+export function Main4(className) {
+
+    const newClassName=`${className.className} text-white`
+
     return (
-        <div className="card border border-dark rounded ml-4 mx-auto" style={{ width: '18rem', marginBottom: '4px' }}>
+        <div className={`card rounded border-dark ml-4 mx-auto ${newClassName}`} style={{ width: '18rem', marginBottom: '4px' }}>
             <img style={{ borderRadius: '9px' }} src={Img4} className="card-img-top img-fluid img-thumbnail" alt="..." />
             <div className="card-body text-center">
 
@@ -73,9 +92,12 @@ export function Main4() {
     )
 }
 
-export function Yapayzeka() {
+export function Yapayzeka(className) {
+
+    const newClassName=`${className.className} text-white`
+
     return (
-        <div className="card border border-dark rounded ml-4 mx-auto" style={{ width: '18rem', marginBottom: '4px' }}>
+        <div className={`card rounded border-dark ml-4 mx-auto ${newClassName}`} style={{ width: '18rem', marginBottom: '4px' }}>
             <img style={{ borderRadius: '9px' }} src={Img6} className="card-img-top img-fluid img-thumbnail" alt="..." />
             <div className="card-body text-center">
 
@@ -88,17 +110,25 @@ export function Yapayzeka() {
 
 
 
-export function Blackmirror() {
+
+export function Blackmirror(className) {
+
+    const newClassName=`${className.className} text-white`
+
+
     return (
-        <div className="card border border-dark rounded ml-4 mx-auto" style={{ width: '18rem', marginBottom: '4px' }}>
-            <img style={{ borderRadius: '9px' }} src={Img5} className="card-img-top img-fluid img-thumbnail" alt="..." />        
-            <div className="card-body text-center">         
-                <p className="card-text no-indent">Black Mirror, yaratıcısı Charlie Brooker tarafından hayatın her alanına teknolojinin müdahalesini konu alan bir antoloji dizisidir. İlk kez 2011 yılında İngiltere'de yayınlanan dizi, sonraki yıllarda Netflix tarafından da satın alındı ve dünya çapında geniş bir hayran kitlesi kazandı. <br /><small className='text-center' style={{fontSize:'10px'}}>30 Nisan 2023 <BsCalendarDate style={{fontSize:'15px',marginBottom:'3px',marginLeft:'3px'}}/></small></p>     
+        <div className={`card rounded border-dark ml-4 mx-auto ${newClassName}`} style={{ width: '18rem', marginBottom: '4px' }}>
+            <img style={{ borderRadius: '9px' }} src={Img5} className="card-img-top img-fluid img-thumbnail" alt="..." />
+            <div className="card-body text-center">
+                <p className="card-text no-indent">Black Mirror, yaratıcısı Charlie Brooker tarafından hayatın her alanına teknolojinin müdahalesini konu alan bir antoloji dizisidir. İlk kez 2011 yılında İngiltere'de yayınlanan dizi, sonraki yıllarda Netflix tarafından da satın alındı ve dünya çapında geniş bir hayran kitlesi kazandı. <br /><small className='text-center' style={{ fontSize: '10px' }}>30 Nisan 2023 <BsCalendarDate style={{ fontSize: '15px', marginBottom: '3px', marginLeft: '3px' }} /></small></p>
                 <Link to={'/blackmirror-yazi'} className="btn">Yazıyı gör</Link>
             </div>
         </div>
     )
 }
+
+
+
 
 
 

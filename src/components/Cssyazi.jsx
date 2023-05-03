@@ -1,23 +1,51 @@
 
-import Navbar from './Navbar'
+
 import Footer from './Footer'
 import Img1 from '../images/css.jpg'
 import React, { useEffect } from 'react';
 
+import {  useState } from 'react'
+import Navbar from './Butonsuz_navbar'
+import { MdOutlineLightMode,MdOutlineNightlight } from 'react-icons/md';
+
 function Cssyazi() {
+
+    const [darkMode, setDarkMode] = useState(false);
+    const className = darkMode ? 'bg-dark text-white border-white' : '';
+
+    const toggleDarkMode = () => {
+        setDarkMode(prevDarkMode => !prevDarkMode);
+        localStorage.setItem('isDarkMode', !darkMode);
+    }
+
+
+    useEffect(() => {
+        const isDarkMode = localStorage.getItem('isDarkMode') === 'true';
+        setDarkMode(isDarkMode);
+    }, []);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
 
+
     return (
-        <div>
+        <div className={`${className}`}>
             <Navbar />
 
             <div className="container">
                 <div className="row">
-                    <div style={{ borderRadius: "4px", textAlign: "left" }} className="col-11 mx-auto border border-dark border-radius my-1">
+                    <div style={{ borderRadius: "4px", textAlign: "left" }} className={`col-11 mx-auto border border-dark border-radius my-1 ${className}`}>
+
+                        <div className='d-flex justify-content-end'>
+                            <button className="btn btn-secondary btn-sm my-3" onClick={toggleDarkMode}>
+                            {darkMode ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
+                            </button>
+                        </div>
+
+
+
                         <h1 className="text-center mt-3">
                             <strong>CSS nedir?</strong>
                         </h1>
@@ -54,7 +82,7 @@ function Cssyazi() {
             </div>
             <div className="container">
                 <div className="row">
-                    <div className="col-11 mx-auto  offset-md-2 border border-dark rounded my-1">
+                    <div className={`col-11 mx-auto  offset-md-2 border border-dark rounded my-1 ${className}`}>
                         <h2 className="text-center">
                             <strong>Sık kullanılan CSS stilleri</strong>
                         </h2>
@@ -62,7 +90,7 @@ function Cssyazi() {
                         <div className="d-flex justify-content-center">
                             <div className="p-1">
                                 <a href={Img1} target="_blank" rel="noopener noreferrer">
-                                    <img className="img-fluid" src={Img1} style={{width:"562px",height:"300px"}}  alt="" />
+                                    <img className="img-fluid" src={Img1} style={{ width: "562px", height: "300px" }} alt="" />
                                 </a>
                             </div>
                         </div>

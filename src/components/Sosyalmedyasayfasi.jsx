@@ -8,6 +8,9 @@ import Img4 from '../images/linkedin.png'
 import Img5 from '../images/twitter.png'
 import Img6 from '../images/instagram.png'
 import Img7 from '../images/social.jpg'
+import {useContext,useEffect,useState} from 'react'
+
+
 
 
 
@@ -15,11 +18,31 @@ import Img7 from '../images/social.jpg'
 
 
 function Sosyalmedyasayfasi() {
+
+
+        
+    const [darkMode, setDarkMode] = useState(false);
+    const className = darkMode ? 'bg-dark' : '';
+
+    const toggleDarkMode = () => {
+        setDarkMode(prevDarkMode => !prevDarkMode);
+        localStorage.setItem('isDarkMode', !darkMode);
+    }
+
+
+    useEffect(() => {
+        const isDarkMode = localStorage.getItem('isDarkMode') === 'true';
+        setDarkMode(isDarkMode);
+    }, []);
+
+    
     return (
-        <div className="App">
-            <Navbar />
-            <div style={{backgroundColor:'#cdf6e4'}} className="row m-0">
-                <div className="yazi-listesi col-lg-3 col-sm-12 text-center">
+        <div className={`App `}>
+            <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
+            <div className={`row m-0 yazi-listesi ${className}`} >
+
+
+                <div className={`yazi-listesi col-lg-3 col-sm-12 text-center ${className}`} >
                     <p className='mb-5'></p>
                     
                     <p ></p>
@@ -52,7 +75,7 @@ function Sosyalmedyasayfasi() {
                     </a>
 
                 </div>
-                <div className="col-lg-9  col-sm-12 p-0">
+                <div className={`col-lg-9  col-sm-12 p-0 `}>
                     <img className='img-fluid' src={Img7} alt="" />
                 </div>
             </div>

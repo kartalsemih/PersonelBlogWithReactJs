@@ -1,26 +1,57 @@
 
-import Navbar from './Navbar'
+
 import Footer from './Footer'
 import Img1 from '../images/js1.jpg'
 import Img2 from '../images/js2.jpg'
 import Img3 from '../images/js3.jpg'
 import Img4 from '../images/js4.jpg'
 import React, { useEffect } from 'react';
+import Navbar from './Butonsuz_navbar'
+
+import { useContext ,useState} from 'react'
+import { MdOutlineLightMode,MdOutlineNightlight } from 'react-icons/md';
 
 function Javascriptyazi() {
 
+
+    
+    const [darkMode, setDarkMode] = useState(false);
+    const className = darkMode ? 'bg-dark text-white border-white' : '';
+
+    const toggleDarkMode = () => {
+        setDarkMode(prevDarkMode => !prevDarkMode);
+        localStorage.setItem('isDarkMode', !darkMode);
+    }
+
+
+    useEffect(() => {
+        const isDarkMode = localStorage.getItem('isDarkMode') === 'true';
+        setDarkMode(isDarkMode);
+    }, []);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+
+
+
     return (
-        <div>
+        <div className={`${className}`}>
             <Navbar />
 
             <div className="container">
                 <div className="row">
-                    <div style={{ borderRadius: "4px", textAlign: "left" }} className="col-11 mx-auto border border-dark border-radius my-1">
+                    <div style={{ borderRadius: "4px", textAlign: "left" }} className={`col-11 mx-auto border border-dark border-radius my-1 ${className}`}>
+
+                        <div className='d-flex justify-content-end'>
+                            <button className="btn btn-secondary btn-sm my-3" onClick={toggleDarkMode}>
+                            {darkMode ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
+                            </button>
+                        </div>
+
+
+
                         <h1 className="text-center mt-3">
                             <strong>JavaScript Nedir?</strong>
                         </h1>
@@ -58,7 +89,7 @@ function Javascriptyazi() {
             </div>
             <div className="container">
                 <div className="row">
-                    <div className="col-11 mx-auto  offset-md-2 border border-dark rounded my-1">
+                    <div className={`col-11 mx-auto  offset-md-2 border border-dark rounded my-1 ${className}`}>
                         <h2 className="text-center">
                             <strong>JavaScript'in temel sözdizimine birkaç örnek:</strong>
                         </h2>

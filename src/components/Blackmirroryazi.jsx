@@ -1,26 +1,59 @@
 
 
-import Navbar from './Navbar'
+
 import Footer from './Footer'
 import Img1 from '../images/3343983-10.jpg'
 import Img2 from '../images/bm-3.jpg'
 import Img3 from '../images/bm-2.jpg'
 import Img4 from '../images/blackmirror1.jpg'
+import { useContext, useState, useEffect } from 'react'
+import Navbar from './Butonsuz_navbar'
+import { MdOutlineLightMode,MdOutlineNightlight } from 'react-icons/md';
+
 
 
 
 function Blackmirroryazi() {
+    const [darkMode, setDarkMode] = useState(false);
+    const className = darkMode ? 'bg-dark text-white border-white' : '';
+
+    const toggleDarkMode = () => {
+        setDarkMode(prevDarkMode => !prevDarkMode);
+        localStorage.setItem('isDarkMode', !darkMode);
+    }
+
+
+    useEffect(() => {
+        const isDarkMode = localStorage.getItem('isDarkMode') === 'true';
+        setDarkMode(isDarkMode);
+    }, []);
+
+
+
     return (
-        <div>
+        <div className={`${className}`}>
             <Navbar />
 
             <div className="container">
                 <div className="row">
-                    <div style={{ borderRadius: "4px", textAlign: "left" }} className="col-11 mx-auto border border-dark border-radius my-1">
+                    <div style={{ borderRadius: "4px", textAlign: "left" }} className={`col-11 mx-auto border border-dark border-radius my-1 ${className}`}>
+
+                        <div className='d-flex justify-content-end'>
+                            <button className="btn btn-secondary btn-sm my-3" onClick={toggleDarkMode}>
+                            {darkMode ? <MdOutlineLightMode /> : <MdOutlineNightlight />}
+                            </button>
+                        </div>
+
+
                         <h1 className="text-center mt-3">
                             <strong>Black Mirror İnceleme</strong>
                         </h1>
-                        <p className="text-left first-letter indent">
+
+
+
+
+
+                        <p className="text-left first-letter indent ">
                             Black Mirror, yaratıcısı Charlie Brooker tarafından hayatın her alanına teknolojinin müdahalesini konu alan bir antoloji dizisidir. İlk kez 2011 yılında İngiltere'de yayınlanan dizi, sonraki yıllarda Netflix tarafından da satın alındı ve dünya çapında geniş bir hayran kitlesi kazandı.
                             Dizinin başarısı, teknolojinin insan hayatında giderek artan etkisine ve bunun sonuçlarına odaklanmasından kaynaklanıyor. Black Mirror, modern toplumun en büyük endişelerine yönelik korkunç senaryolar sunarak izleyicileri düşündürüyor ve teknolojinin insanlık üzerindeki etkisini tartışmaya açıyor.
                             <br /><br />

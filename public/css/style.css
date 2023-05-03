@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Noto Sans Lao', sans-serif;
-
+    
 
 }
 
@@ -116,10 +116,15 @@ a img {
 .liste-renk{
     color:#333;
 }
-.liste-renk:hover{
-    color:#a859e4;
-}
 
+.liste-renk:hover {
+    color: #a859e4;
+  }
+  
+  .liste-renk:hover > a {
+    color: #a859e4;
+  }
+  
 .img-size{
     width: 50px;
 }
@@ -136,5 +141,34 @@ a img {
         flex-direction: column;
         justify-content: center;
     }
+    .logo-md{
+        width: 50px;
+    }
+    .btn-mid{
+        position: absolute;
+        width: 50px;
+        height: 35px;
+        top: 0px;
+        right: 15px;
+    }
   }
+ 
+  @media (max-width: 576px) {
+    .btn-mid{
+        position: absolute;
+        width: 50px;
+        height: 35px;
+        top: 0px;
+        right: 15px;
+    }
+  }
+  
+.black{
+    color:black;
+}
+
+.white{
+    color:white;
+}
+
 
